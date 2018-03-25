@@ -13,9 +13,18 @@ class PagesController extends Controller
 	}
 */
 
+    public function __construct(){
+        $this->middleware('example',['except'=>['home']]);
+    }
 
     public function home(){
     	return view('home');
+        /*return response('Contenido de la respuesta',202)
+        ->header('X-TOKEN','secret')
+        ->header('X-TOKEN-2','secret-2')
+        ->cookie('X-COOKIE','cookie');*/
+
+
     }
 
     public function contact(){
@@ -40,11 +49,21 @@ class PagesController extends Controller
     public function mensajes(Request $request){
     	//return 'Procesando el mensaje' ;
     	//return $request->all();
-    	if($request->has('nombre')){
+    	/*if($request->has('nombre')){
     		return "Si tiene nombre".$request->input('nombre');
     	}
     	
-    	return "No tiene nombre";
+    	return "No tiene nombre";*/
+        $data = $request->all();//devuelve un array
+        /*return response()->json(['data'=>$data],202)
+        ->header('TOKEN','secret');*/
+       //return redirect('/');//redirecciona a home
+        //return redirect()->route('saludos');
+       /* return redirect()
+                ->route('contactos')
+                ->with('info','Tu mensaje a sido enviado');*/
+        return back()->with('info','Tu mensaje ha sido enviado correctamente :)');
+
 
     	
     }

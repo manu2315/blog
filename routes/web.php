@@ -17,6 +17,7 @@
     return view('home');
 }]);*/
 
+/*Route::get('/', ['as'=>'home','uses'=>'PagesController@home'])->middleware('example');*/
 Route::get('/', ['as'=>'home','uses'=>'PagesController@home']);
 
 /*Route::get('contactame', ['as'=>'contactos',function () {
