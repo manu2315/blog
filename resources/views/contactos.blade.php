@@ -7,7 +7,7 @@
 	<h3>{{ session('info') }}</h3>
 @else
 <form method="POST" action="contacto">
-	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	{{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
 	{!! csrf_field() !!}
 	<p>
 		<label for="nombre">
