@@ -24,7 +24,7 @@
 			<a class="{{request()->is('contactame') ? 'active':''}}" href="{{ route('contactos')}}">Contacto</a> --}}
 			<a class="{{activeMenu('/')}}" href="{{ route('home') }}">Inicio</a>
 			<a class="{{activeMenu('saludos/*')}}" href="{{ route('saludos','Jorge')}}">Saludo</a>
-			<a class="{{activeMenu('contactame')}}" href="{{ route('contactos')}}">Contacto</a>
+			<a class="{{activeMenu('contactame')}}" href="{{ route('messages.create')}}">Contacto</a>
 		</nav>
 	</header>
 	@yield('contenido')
