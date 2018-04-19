@@ -16,6 +16,8 @@ class MessagesController extends Controller
     public function index()
     {
         //
+        $messages=DB::table('messages')->get();
+        return view('messages.index',compact('messages'));
     }
 
     /**
@@ -62,7 +64,10 @@ class MessagesController extends Controller
      */
     public function show($id)
     {
-        //
+       // return "Este es el mensaje con id ".$id;
+       $message= DB::table('messages')->where('id',$id)->first();
+        return view('messages.show',compact('message'));
+
     }
 
     /**
