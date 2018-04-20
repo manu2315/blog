@@ -57,3 +57,4 @@ Route::get('mensajes/create',['as'=>'messages.create','uses'=>'MessagesControlle
 Route::post('mensajes',['as'=>'messages.store','uses'=>'MessagesController@store']);
 
 Route::get('mensajes/{id}',['as'=>'messages.show','uses'=>'MessagesController@show']);
+Route::get('mensajes/{id}/edit',['as'=>'messages.edit','uses'=>'MessagesController@edit']);

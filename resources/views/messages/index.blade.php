@@ -9,6 +9,7 @@
 				<th>Nombre</th>
 				<th>Email</th>
 				<th>Mensaje</th>
+				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,6 +23,7 @@
 					</td>
 					<td>{{$message->email}}</td>
 					<td>{{$message->mensaje}}</td>
+					<td>Editar</td>
 				</tr>
 
 			@endforeach

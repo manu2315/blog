@@ -53,7 +53,10 @@ class MessagesController extends Controller
 
         ]);
         //return "Hecho";
-        return redirect('messages.index');
+        //return redirect('messages.index');
+        //No venia en el tutorial
+        return redirect('mensajes');
+        //return view ('messages.index');
     }
 
     /**
@@ -78,7 +81,9 @@ class MessagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+         $message= DB::table('messages')->where('id',$id)->first();
+         return view('messages.edit',compact('message'));
     }
 
     /**
