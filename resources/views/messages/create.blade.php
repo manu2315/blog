@@ -6,7 +6,7 @@
 @if(session()->has('info'))
 	<h3>{{ session('info') }}</h3>
 @else
-<form method="POST" action="{{ route('messages.store') }}">
+<form method="POST" action="{{ route('mensajes.store') }}">
 	{{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
 	{!! csrf_field() !!}
 	<p>
