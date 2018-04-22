@@ -3,9 +3,11 @@
 
 @section('contenido')
 	<h1>Editar mensaje</h1>
-	<form method="POST" action="{{ route('messages.store') }}">
+	<form method="POST" action="{{ route('messages.update',$message->id) }}">
 		{{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
+		{!! method_field('PUT') !!}
 		{!! csrf_field() !!}
+	{{-- 	{{ method_field('PUT') }}{{csrf_field()}} --}}
 		<p>
 			<label for="nombre">
 			Nombre

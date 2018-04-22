@@ -96,6 +96,13 @@ class MessagesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        DB::table('messages')->where('id',$id)->update([
+            "nombre"=>$request->input('nombre'),
+            "email"=>$request->input('email'),
+            "mensaje"=>$request->input('mensaje'),
+            "updated_at"=>Carbon::now()
+        ]);
+        return redirect()->route('messages.index');
     }
 
     /**
@@ -106,6 +113,7 @@ class MessagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('messages')->where('id',$id)->delete();   
+        return redirect()->route('messages.index');
     }
 }

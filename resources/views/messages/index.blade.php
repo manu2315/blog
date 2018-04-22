@@ -23,7 +23,15 @@
 					</td>
 					<td>{{$message->email}}</td>
 					<td>{{$message->mensaje}}</td>
-					<td>Editar</td>
+					<td>
+						<a href="{{ route('messages.edit',$message->id) }}">Editar</a>
+						<form style="display: inline" method="POST" action="{{ route('messages.destroy',$message->id) }}">
+							{!! csrf_field() !!}
+							{!! method_field('DELETE') !!}
+							<button type="submit">Eliminar</button>
+							
+						</form>
+					</td>
 				</tr>
 
 			@endforeach
