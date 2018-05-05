@@ -27,9 +27,9 @@ class PagesController extends Controller
 
     }
 
-    public function contact(){
+    /*public function contact(){
     	return view('contactos');
-    }
+    }*/
     public function saludo($nombre="Invitado"){
     	 
 	$html = "<h2>Contenido html</h2>";
@@ -40,13 +40,14 @@ class PagesController extends Controller
 		"Xbox One",
 		"Switch"];
 
+   
 	return view('saludo',compact('nombre','html','script','consolas'));
     }
    /* public function mensajes(){
     	//return 'Procesando el mensaje' ;
     	return $this->request->all();
     }*/
-    public function mensajes(Request $request){
+    //public function mensajes(Request $request){
     	//return 'Procesando el mensaje' ;
     	//return $request->all();
     	/*if($request->has('nombre')){
@@ -54,7 +55,7 @@ class PagesController extends Controller
     	}
     	
     	return "No tiene nombre";*/
-        $data = $request->all();//devuelve un array
+       
         /*return response()->json(['data'=>$data],202)
         ->header('TOKEN','secret');*/
        //return redirect('/');//redirecciona a home
@@ -62,9 +63,12 @@ class PagesController extends Controller
        /* return redirect()
                 ->route('contactos')
                 ->with('info','Tu mensaje a sido enviado');*/
+
+ //   }
+   /*public function mensajes(Request $request){
+      
+        $data = $request->all();//devuelve un array
         return back()->with('info','Tu mensaje ha sido enviado correctamente :)');
 
-
-    	
-    }
+    }*/
 }

@@ -10,6 +10,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class MessagesController extends Controller
 {
+    function __construct(){
+        $this->middleware('auth',['except'=>['create','store']]);
+    }
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -71,8 +78,9 @@ class MessagesController extends Controller
         //return redirect('messages.index');
         //No venia en el tutorial
         //return redirect('mensajes');//funciona
-        return redirect()->route('mensajes.index');
+       // return redirect()->route('mensajes.index');
         //return view ('messages.index');
+        return redirect()->route('mensajes.create')->with('info','Hemos recibido tu mensaje');
     }
 
     /**
@@ -84,7 +92,8 @@ class MessagesController extends Controller
     public function show($id)
     {
        // return "Este es el mensaje con id ".$id;
-       $message= DB::table('messages')->where('id',$id)->first();
+       //$message= DB::table('messages')->where('id',$id)->first();
+       $message= Message::findOrFail($id);
         return view('messages.show',compact('message'));
 
     }
@@ -98,7 +107,8 @@ class MessagesController extends Controller
     public function edit($id)
     {
         
-         $message= DB::table('messages')->where('id',$id)->first();
+         //$message= DB::table('messages')->where('id',$id)->first();
+        $message= Message::findOrFail($id);
          return view('messages.edit',compact('message'));
     }
 
@@ -112,12 +122,19 @@ class MessagesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        DB::table('messages')->where('id',$id)->update([
+        /*DB::table('messages')->where('id',$id)->update([
             "nombre"=>$request->input('nombre'),
             "email"=>$request->input('email'),
             "mensaje"=>$request->input('mensaje'),
             "updated_at"=>Carbon::now()
-        ]);
+        ]);*/
+
+        //Metodo optimizado
+        /*$message= Message::findOrFail($id);
+        $message->update($request->all());*/
+
+        //Metodo mas optimizado
+        Message::findOrFail($id)->update($request->all());
         return redirect()->route('mensajes.index');
     }
 
@@ -129,7 +146,8 @@ class MessagesController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('messages')->where('id',$id)->delete();   
+        //DB::table('messages')->where('id',$id)->delete();   
+        Message::findOrFail($id)->delete();
         return redirect()->route('mensajes.index');
     }
 }

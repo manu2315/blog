@@ -26,7 +26,7 @@ Route::get('/', ['as'=>'home','uses'=>'PagesController@home']);
 	return view('contactos');
 }]);*/
 
-Route::get('contactame', ['as'=>'contactos','uses'=>'PagesController@contact']);
+//Route::get('contactame', ['as'=>'contactos','uses'=>'PagesController@contact']);
 
 /*Route::get('saludos/{nombre?}', ['as'=>'saludos',function ($nombre="Invitado") {
     //return view('welcome');
@@ -47,10 +47,15 @@ Route::get('contactame', ['as'=>'contactos','uses'=>'PagesController@contact']);
 
 Route::get('saludos/{nombre?}', ['as'=>'saludos','uses'=>'PagesController@saludo'])->where('nombre',"[A-Za-z]+");
 
-Route::post('contacto','PagesController@mensajes');
-
 Route::resource('mensajes','MessagesController');
+
+
+
+//Route::post('contacto','PagesController@mensajes');
+
+
 /*
+Route::resource('mensajes','MessagesController');
 Route::get('mensajes',['as'=>'messages.index','uses'=>'MessagesController@index']);
 
 Route::get('mensajes/create',['as'=>'messages.create','uses'=>'MessagesController@create']);
@@ -61,3 +66,16 @@ Route::get('mensajes/{id}',['as'=>'messages.show','uses'=>'MessagesController@sh
 Route::get('mensajes/{id}/edit',['as'=>'messages.edit','uses'=>'MessagesController@edit']);
 Route::put('mensajes/{id}',['as'=>'messages.update','uses'=>'MessagesController@update']);
 Route::delete('mensajes/{id}',['as'=>'messages.destroy','uses'=>'MessagesController@destroy']);*/
+
+Route::get('test',function(){
+	$user = new App\User;
+	$user->name='Manu';
+	$user->email='manuairalert@gmail.com';
+	$user->password=bcrypt('123123');
+	$user->save();
+	return $user;
+});
+
+Route::get('login','Auth\LoginController@showLoginForm');
+Route::post('login','Auth\LoginController@login');
+Route::get('logout','Auth\LoginController@logout');

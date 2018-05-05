@@ -23,9 +23,17 @@
 			<a class="{{request()->is('saludos/*') ? 'active':''}}" href="{{ route('saludos','Jorge')}}">Saludo</a>
 			<a class="{{request()->is('contactame') ? 'active':''}}" href="{{ route('contactos')}}">Contacto</a> --}}
 			<a class="{{activeMenu('/')}}" href="{{ route('home') }}">Inicio</a>
-			<a class="{{activeMenu('saludos/*')}}" href="{{ route('saludos','Jorge')}}">Saludo</a>
+			<a class="{{activeMenu('saludos*')}}" href="{{ route('saludos','Manu')}}">Saludo</a>
 			<a class="{{activeMenu('mensajes/create')}}" href="{{ route('mensajes.create')}}">Contactos</a>
+			
+			@if(auth()->check())
 			<a class="{{activeMenu('mensajes')}}" href="{{ route('mensajes.index')}}">Mensajes</a>
+				<a href="/logout">Cerrar sesión de {{ auth()->user()->name }}</a>
+			@endif
+			@if (auth()->guest())
+				<a class="{{ activeMenu('login') }}" href="/login">Login</a>
+			@endif
+			
 		</nav>
 	</header>
 	@yield('contenido')
