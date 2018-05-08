@@ -42,7 +42,7 @@
 					<a class="{{ activeMenu('login') }}" href="/login">Login</a>
 				@endif --}}
 
-		      {{-- <li class="nav-item dropdown">
+		      <li class="nav-item dropdown">
 		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		          Dropdown
 		        </a>
@@ -52,7 +52,7 @@
 		          <div class="dropdown-divider"></div>
 		          <a class="dropdown-item" href="#">Something else here</a>
 		        </div>
-		      </li> --}}
+		      </li>
 		     
 		    </ul>
 		     <ul class="navbar-nav navbar-right">
@@ -74,6 +74,6 @@
 		@yield('contenido')
 		<footer>Copyright {{ date('Y')}}</footer>
 	</div>
-	
+	<script src="/js/app.js"></script>
 </body>
 </html>
